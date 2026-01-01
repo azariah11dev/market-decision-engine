@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from backend.routes.quotes import router
+from backend.routers.quotes import ohlcv_route
 
 app = FastAPI(title="Market Decision Engine", version="1.0")
 
-app.include_router(router)
+app.include_router(ohlcv_route)
 
 @app.get("/")
 def read_root():

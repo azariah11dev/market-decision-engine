@@ -4,9 +4,9 @@ from backend.services.ohlcv import OHLCVMarketInfo
 from datetime import date
 from typing import List
 
-router = APIRouter(prefix="/quotes", tags=["quotes"])
+ohlcv_route = APIRouter(prefix="/quotes", tags=["quotes"])
 
-@router.post("/{ticker}", response_model=List[OHLCVData])
+@ohlcv_route.post("/{ticker}", response_model=List[OHLCVData])
 async def get_ohlcv_data(ticker: str, start_date: date, end_date: date, interval: str):
     try:
         services_ohlcv = OHLCVMarketInfo(ticker)
