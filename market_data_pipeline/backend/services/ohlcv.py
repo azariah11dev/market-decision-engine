@@ -52,7 +52,7 @@ class OHLCVMarketInfo:
         df.columns = [col.lower() for col in df.columns]
 
         #convert datetime to date
-        df["date"] = pd.to_datetime(df["date"]).dt.strftime("%Y-%m-%d %H:%M:%S")
+        df["date"] = pd.to_datetime(df["date"]).dt.date
 
         df["ticker"] = self.ticker #add ticker column
 

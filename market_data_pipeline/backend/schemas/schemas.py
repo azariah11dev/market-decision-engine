@@ -1,8 +1,9 @@
 from pydantic import BaseModel
+from datetime import date
 
-class OHLCVData(BaseModel):
+class OHLCVRespose(BaseModel):
     ticker: str
-    date: str
+    date: date
     open: float
     high: float
     low: float

@@ -17,7 +17,7 @@ services:
   devcontainer:
     build:
       context: .
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - .:/workspaces/market_data_pipeline
     command: sleep infinity

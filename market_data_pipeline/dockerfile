@@ -1,0 +1,17 @@
+FROM python:3.13-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /workspaces/market_data_pipeline
+
+#Uncomment the line below if you want automatic installment of requirements. For uv user you can just do pip install requirement then uv sync
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt || true
+
+# Default command for devcontainer
+CMD ["sleep", "infinity"]
