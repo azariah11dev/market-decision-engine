@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             initial_date_value === "" ||
             final_date_value === ""
         ) {
-            alert("The fields below cannot be empty")
+            alert("The fields in customize data cannot be empty")
         }
         else {
             try {
