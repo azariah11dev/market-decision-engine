@@ -5,6 +5,7 @@ from backend.routers.quotes import ohlcv_route
 from backend.models.ohlcv_db import create_db_and_tables, get_async_session, OHLCVDataDB
 from backend.routers.update import ohlcv_db_route
 from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -12,6 +13,14 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(title="Market Decision Engine", version="1.0", lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5500", 
+                   "http://127.0.0.1:5500"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 @app.get("/")
 def read_root():

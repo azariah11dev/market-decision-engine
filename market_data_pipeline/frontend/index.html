@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Market Decision Engine</title>
+        <link rel="stylesheet" href="./styles/global_style.css">
+        <link rel="stylesheet" href="./styles/container-1.css">
+        <script src="./src/container_1_dropdown.js" defer></script>
+        <script src="./src/container_1.js" defer></script>
+    </head>
+    <body>
+        <div class="container-1">
+            <div class="container-1-dropdown">
+                <p style="font-weight: bold; padding-left: 3px;">
+                    Initial Amount
+                </p>
+                <input type="number" placeholder="Amount: " id="container-1-initial-amount" style="border: 2px solid grey; border-radius: 10px;">
+                <p style="font-weight: bold; padding-left: 3px;">
+                    Stock ticker
+                </p>
+                <input type="text" placeholder="Stock Ticker:" id="container-1-stock-ticker" style="border: 2px solid grey; border-radius: 10px;">
+                <p style="font-weight: bold; padding-left: 3px;">
+                    Starting date
+                </p>
+                <input type="date" id="container-1-initial-date" style="border: 2px solid grey; border-radius: 10px;">
+                <p style="font-weight: bold; padding-left: 3px;">
+                    Ending date
+                </p>
+                <input type="date" id="container-1-final-date" style="border: 2px solid grey; border-radius: 10px;">
+                <div class="container-1-dropdown-content">
+                    <label for="container-1-interval" style="font-weight: bold;">
+                    Choose an interval:
+                    </label>
+                    <select id="container-1-interval" style="border: 2px solid grey; border-radius: 10px; margin-top:2px;">
+                        <option value="1d">1 day</option>
+                        <option value="5d">5 days</option>
+                        <option value="1wk">1 Week</option>
+                        <option value="1mo">1 Month</option>
+                        <option value="3mo">3 Months</option>
+                        <option value="6mo">6 Months</option>
+                        <option value="1y">1 Year</option>
+                        <option value="2y">2 Years</option>
+                        <option value="5y">5 Years</option>
+                        <option value="10y">10 Years</option>
+                        <option value="ytd">YTD</option>
+                        <option value="max">MAX</option>
+                    </select>
+                </div>
+                <div class="container-1-dropdown-benchmark">
+                    <label for="container-1-options-benchmark" style="font-weight: bold;">
+                        Benchmark Ticker
+                    </label>
+                    <select id="container-1-options-benchmark" style="border: 2px solid grey; border-radius: 10px; margin-top: 2px;">
+                        <option value="">No Option Selected</option>
+                        <option value="SPY">S&P 500 (US large Cap)</option>
+                        <option value="DJI">Dow Jones Industrial Average (US Blue Chip)</option>
+                        <option value="NDX">Nasdaq (US Tech Heavy)</option>
+                        <option value="RUT">Russell 2000 (US Small Cap)</option>
+                    </select>
+                </div>
+                <div class="container-1-dropdown-sector">
+                    <label for="container-1-options-sector" style="font-weight: bold;">
+                        Sector Selection
+                    </label>
+                    <select id="container-1-options-sector" style="border: 2px solid grey; border-radius: 10px; margin-top: 2px;">
+                        <option value="">No Option Selected</option>
+                        <option value="XLC">State Street Communication Services Select Sector SPDR ETF</option>
+                        <option value="XLY">State Street Consumer Discretionary Select Sector SPDR ETF</option>
+                        <option value="XLP">State Street Consumer Staples Select Sector SPDR ETF</option>
+                        <option value="XLE">State Street Energy Select Sector SPDR ETF</option>
+                        <option value="XLF">State Street Financial Select Sector SPDR ETF</option>
+                        <option value="XLV">State Street Health Care Select Sector SPDR ETF</option>
+                        <option value="XLI">State Street Industrial Select Sector SPDR ETF</option>
+                        <option value="XLB">State Street Materials Select Sector SPDR ETF</option>
+                        <option value="XLRE">State Street Real Estate Select Sector SPDR ETF</option>
+                        <option value="XLK">State Street Technology Select Sector SPDR ETF</option>
+                        <option value="XLSR">State Street US Sector Rotation ETF</option>
+                        <option value="XLU">State Street Utilities Select Sector SPDR ETF</option>
+                    </select>
+                </div>
+                <div id="container-1-analyze-btn-holder">
+                    <button id="container-1-analyze-btn">Analyze</button>
+                </div>
+            </div>
+            <button id="container-1-dropdown-btn">Customize Data</button>
+        </div>
+        <div id="container-2"></div>
+    </body>
+</html>
