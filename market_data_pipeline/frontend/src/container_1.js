@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const benchmark = document.getElementById("container-1-options-benchmark");
     const sector = document.getElementById("container-1-options-sector");
     const analyze = document.getElementById("container-1-analyze-btn");
-    const output = document.getElementById("container-2");
 
     analyze.addEventListener("click", async () => {
         const amount_value = parseFloat(initial_amount.value);
