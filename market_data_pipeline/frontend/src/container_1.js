@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         end_date: final_date_value,
                         interval: interval_value,
                         sector: sector_value
-                     })
+                    })
                 });
 
                 const ticker_data = await ticker_response.json();
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         start_date: initial_date_value,
                         end_date: final_date_value,
                         interval: interval_value,
-                     })
+                    })
                 });
 
                 const benchmark_data = await benchmark_response.json();
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         start_date: initial_date_value,
                         end_date: final_date_value,
                         interval: interval_value
-                     })
+                    })
                 });
 
                 const sector_data = await sector_response.json();

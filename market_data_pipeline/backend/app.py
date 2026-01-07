@@ -1,11 +1,13 @@
 from fastapi import FastAPI, Depends, HTTPException
 from contextlib import asynccontextmanager
 from sqlalchemy import select
-from backend.routers.quotes import ohlcv_route
-from backend.models.ohlcv_db import create_db_and_tables, get_async_session, OHLCVDataDB
-from backend.routers.update import ohlcv_db_route
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi.middleware.cors import CORSMiddleware
+
+from backend.routers.update import ohlcv_db_route
+from backend.models.ohlcv_db import create_db_and_tables, get_async_session, OHLCVDataDB
+from backend.routers.quotes import ohlcv_route
+from backend.routers.performance import performance_route
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -28,7 +30,8 @@ def read_root():
             "docs": "/docs for API documentation",
             "health": "/health for health check",
             "ohlcv_fetch": "/db/{ticker} to obtain existing market info on stocks",
-            "ohlcv_fetch_limited": "/db/{ticker}?limit=(int 1 - ...) to obtain limited existing market info on stocks"}
+            "ohlcv_fetch_limited": "/db/{ticker}?limit=(int 1 - ...) to obtain limited existing market info on stocks",
+            "calculations": "/calculations/{ticker} to find calculation parameters"}
 
 @app.get("/health")
 def health_check():
@@ -52,3 +55,4 @@ async def get_ohlcv(ticker: str,
 
 app.include_router(ohlcv_route)
 app.include_router(ohlcv_db_route)
+app.include_router(performance_route)
