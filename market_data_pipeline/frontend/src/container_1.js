@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
             initial_date_value === "" ||
             final_date_value === ""
         ) {
-            alert("The fields in customize data cannot be empty")
+            alert("The fields in customize data cannot be empty");
         }
         else {
             try {
-                const response = await fetch(`http://localhost:8000/quotes/${ticker_value}?start_date=${initial_date_value}&end_date=${final_date_value}&interval=${interval_value}`, {
+                const ticker_response = await fetch(`http://localhost:8000/quotes/${ticker_value}?start_date=${initial_date_value}&end_date=${final_date_value}&interval=${interval_value}`, {
                     method: "POST",
                     mode: "cors",
                     headers: { "Content-Type": "application/json" },
@@ -36,16 +36,63 @@ document.addEventListener("DOMContentLoaded", () => {
                         start_date: initial_date_value,
                         end_date: final_date_value,
                         interval: interval_value,
-                        benchmark: benchmark_value,
                         sector: sector_value
                      })
                 });
 
-                const data = await response.json();
-                console.log(data)
-                // output.value = data.
+                const ticker_data = await ticker_response.json();
+                console.log(ticker_data);
             } catch (error) {
             console.error(error);
+            }
+        }
+
+        if (benchmark_value === "") {
+            console.log(benchmark_value);
+        }
+        else {
+            try {
+                const benchmark_response = await fetch(`http://localhost:8000/quotes/${benchmark_value}?start_date=${initial_date_value}&end_date=${final_date_value}&interval=${interval_value}`, {
+                    method: "POST",
+                    mode: "cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ starting_balance: amount_value,
+                        ticker: benchmark_value,
+                        start_date: initial_date_value,
+                        end_date: final_date_value,
+                        interval: interval_value,
+                     })
+                });
+
+                const benchmark_data = await benchmark_response.json();
+                console.log(benchmark_data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        if (sector_value === "") {
+            console.log(sector_value);
+        }
+        else {
+            try {
+                const sector_response = await fetch(`http://localhost:8000/quotes/${sector_value}?start_date=${initial_date_value}&end_date=${final_date_value}&interval=${interval_value}`, {
+                    method: "POST",
+                    mode: "cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ starting_balance: amount_value,
+                        ticker: sector_value,
+                        start_date: initial_date_value,
+                        start_date: initial_date_value,
+                        end_date: final_date_value,
+                        interval: interval_value
+                     })
+                });
+
+                const sector_data = await sector_response.json();
+                console.log(sector_data)
+            } catch (error) {
+                console.error(error);
             }
         }
     
