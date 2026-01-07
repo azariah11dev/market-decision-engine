@@ -18,8 +18,17 @@ async def save_ohlcv(
         service = OHLCVMarketInfo(ticker)
         rows = service.get_ohlcv_data(start_date, end_date, interval)
         create_rows = insert(OHLCVDataDB).values(rows)
-        create_rows = create_rows.on_conflict_do_nothing(
-            index_elements=["ticker", "date"]
+        create_rows = create_rows.on_conflict_do_update(
+            index_elements=["ticker", "date"],
+            set_= {
+                "open": create_rows.excluded.open,
+                "high": create_rows.excluded.high,
+                "low": create_rows.excluded.low,
+                "close": create_rows.excluded.close,
+                "volume": create_rows.excluded.volume,
+                "dividends": create_rows.excluded.dividends,
+                "stock_split": create_rows.excluded.stock_split
+            }
         )
         await session.execute(create_rows)
         await session.commit()

@@ -19,6 +19,9 @@ class OHLCVDataDB(Base):
     low = Column(Float, nullable=False)
     close = Column(Float, nullable=False)
     volume = Column(Float, nullable=False)
+    dividends = Column(Float, nullable=False, default=0.0)
+    stock_split = Column(Float, nullable=False, default=0.0)
+
     created_at = Column(DateTime, server_default=func.now())
 
     __table_args__ = (

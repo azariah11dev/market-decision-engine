@@ -20,7 +20,8 @@ class OHLCVMarketInfo:
                 start=start_date,
                 end=end_date,
                 interval=interval,
-                progress=False
+                progress=False,
+                actions=True
         )
 
         if df.empty:
@@ -31,7 +32,8 @@ class OHLCVMarketInfo:
                  start=new_start,
                  end=end_date,
                  interval=interval,
-                 progress=False
+                 progress=False,
+                 actions=True
         )
         #If still empty, raise error
         if df.empty:
